@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: mpi-docker
+ labels:
+   app: mpi-docker
+spec:
+ replicas: 2
+ selector:
+   matchLabels:
+     app: mpi-docker
+ template:
+   metadata:
+     labels:
+       app: mpi-docker
+   spec:
+     containers:
+     - name: mpi-docker
+       image: gcr.io/collabnotes-274523/mpi-docker
+       ports:
+       - containerPort: 22
